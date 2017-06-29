@@ -8,9 +8,16 @@ require('style!css!sass!applicationStyles');
 //load bootstrap
 require('bootstrapStyle');
 
-var Nav = require('Navigation');
+var Main = require('Main');
+var Home = require('Home');
+var About = require('About');
 
 ReactDOM.render(
-    <Nav />,
+    <Router history={hashHistory}>
+        <Route path="/" component={Main}>
+            <IndexRoute  component={Home}/>
+            <Route path="/about" component={About}/>
+        </Route>
+    </Router>,
     document.getElementById('app')
 );

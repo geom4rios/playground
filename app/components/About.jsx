@@ -1,14 +1,14 @@
 var React = require('react');
 
-var Navigation = React.createClass({
+var Home = React.createClass({
     render: function () {
         return (
             <div>
-                <p>Navigation</p>
+                <p>Render About Component</p>
             </div>
+        );
 
-        )
     }
 });
 
-module.exports = Navigation;
+module.exports = Home;
