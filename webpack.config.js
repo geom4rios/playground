@@ -27,7 +27,8 @@ module.exports = {
         ],
         alias: {
             applicationStyles: 'app/styles/app.scss',
-            bootstrapStyle: 'node_modules/bootstrap/dist/css/bootstrap.css'
+            bootstrapStyle: 'node_modules/bootstrap/dist/css/bootstrap.css',
+            bootstrapJs: 'node_modules/bootstrap/dist/js/bootstrap.js'
         },
         extensions: ['', '.js', '.jsx']
     },
