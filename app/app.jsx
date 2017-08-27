@@ -7,6 +7,7 @@ require('style!css!sass!applicationStyles');
 
 //load bootstrap
 require('bootstrapStyle');
+require('bootstrapJs');
 
 var Main = require('Main');
 var Home = require('Home');
