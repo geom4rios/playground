@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');//remove unused files from public
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');//remove dead code
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');//remove dead code and minimize code as much as possible
 
 module.exports = {
     entry: './app/app.jsx',
@@ -13,6 +13,10 @@ module.exports = {
             'process.env': {
                 'NODE_ENV': JSON.stringify('production')
             }
+        }),
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery'
         })
     ],
     output: {
@@ -25,6 +29,7 @@ module.exports = {
             './node_modules'
         ],
         alias: {
+            jquery: "jquery/src/jquery",
             applicationStyles: path.resolve(__dirname,'app/styles/app.scss'),
             bootstrapStyle: 'node_modules/bootstrap/dist/css/bootstrap.css',
             bootstrapJs: 'node_modules/bootstrap/dist/js/bootstrap.js'
