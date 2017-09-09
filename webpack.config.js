@@ -16,7 +16,8 @@ module.exports = {
         }),
         new webpack.ProvidePlugin({
             $: 'jquery',
-            jQuery: 'jquery'
+            jQuery: 'jquery',
+            Popper: 'popper.js'
         })
     ],
     output: {
@@ -29,10 +30,11 @@ module.exports = {
             './node_modules'
         ],
         alias: {
-            jquery: "jquery/src/jquery",
+            jquery: path.resolve(__dirname, 'node_modules/jquery/src/jquery.js'),
+            popperJS: path.resolve(__dirname, 'node_modules/popper.js/dist/umd/popper.js'),
             applicationStyles: path.resolve(__dirname,'app/styles/app.scss'),
-            bootstrapStyle: 'node_modules/bootstrap/dist/css/bootstrap.css',
-            bootstrapJs: 'node_modules/bootstrap/dist/js/bootstrap.js'
+            bootstrapStyle: path.resolve(__dirname, 'node_modules/bootstrap/dist/css/bootstrap.css'),
+            bootstrapJs: path.resolve(__dirname, 'node_modules/bootstrap/dist/js/bootstrap.js')
         },
         extensions: ['.js', '.jsx']
     },

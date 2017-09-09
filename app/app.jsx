@@ -5,9 +5,15 @@ import {Router, Route, hashHistory, IndexRoute} from 'react-router';
 // App scss
 require('applicationStyles');
 
+//load jquery
+require('jquery');
+
+//load popper.js (bootstrap prerequisitie)
+require('popperJS');
+
 //load bootstrap
-//require('bootstrapStyle');
-//require('bootstrapJs');
+require('bootstrapStyle');
+require('bootstrapJs');
 
 import Main from 'Main';
 import Home from 'Home';

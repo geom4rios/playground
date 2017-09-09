@@ -10,8 +10,10 @@
   "author": "Marios Georgiou",
   "license": "MIT",
   "dependencies": {
+    "bootstrap": "^4.0.0-beta",
     "express": "^4.15.4",
     "jquery": "^3.2.1",
+    "popper.js": "^1.12.5",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-router": "^3.0.2"
