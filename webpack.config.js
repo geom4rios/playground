@@ -1,57 +1,64 @@
-var webpack = require('webpack');
-var path = require('path');
+const webpack = require('webpack');
+const path = require('path');
+const CleanWebpackPlugin = require('clean-webpack-plugin');//remove unused files from public
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');//remove dead code
 
 module.exports = {
-    entry: [
-        'script!jquery/dist/jquery.min.js',
-        './app/app.jsx'
-    ],
-    externals: {
-        jquery: 'jQuery'
-    },
+    entry: './app/app.jsx',
     plugins: [
-        new webpack.ProvidePlugin({
-            '$': 'jquery',
-            'jQuery': 'jquery'
+        /*new UglifyJSPlugin({
+            sourceMap: true
+        }),*/
+        new webpack.DefinePlugin({
+            'process.env': {
+                'NODE_ENV': JSON.stringify('production')
+            }
         })
     ],
     output: {
-        path: __dirname,
-        filename: './public/bundle.js'
+        filename: 'bundle.js',
+        path: path.resolve(__dirname, 'public')
     },
     resolve: {
-        root: __dirname,
-        modulesDirectories: [
+        modules: [
             './app/components',
             './node_modules'
         ],
         alias: {
-            applicationStyles: 'app/styles/app.scss',
+            applicationStyles: path.resolve(__dirname,'app/styles/app.scss'),
             bootstrapStyle: 'node_modules/bootstrap/dist/css/bootstrap.css',
             bootstrapJs: 'node_modules/bootstrap/dist/js/bootstrap.js'
         },
-        extensions: ['', '.js', '.jsx']
+        extensions: ['.js', '.jsx']
     },
     module: {
-        loaders: [
+        rules: [
             {
-                loader: 'babel-loader',
-                query: {
-                    presets: ['react', 'es2015', 'stage-0']
-                },
                 test: /\.jsx?$/,
+                use: ['babel-loader'],
                 exclude: /(node_modules|bower_components)/
             },
             {
-                test: /\.css$/,
-                loader: 'style-loader!css-loader'
+                test: /\.scss$/,
+                use: [{
+                    loader: "style-loader" // creates style nodes from JS strings
+                }, {
+                    loader: "css-loader" // translates CSS into CommonJS
+                }, {
+                    loader: "sass-loader" // compiles Sass to CSS
+                }]
             },
             {
-                test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
-                loader: 'url-loader',
-                options: {
-                    limit: 10000
-                }
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader']
+            },
+            {
+                test: /\.(png|svg|jpg|gif)$/,
+                use: ['file-loader']
+            },
+            {
+                test: /\.(woff|woff2|eot|ttf|otf)$/,
+                use: ['file-loader']
             }
         ]
     },

@@ -1,18 +1,20 @@
-var React = require('react');
+import React from 'react';
 
-var Navigation = require('Navigation');
+import Navigation from 'Navigation';
 
-var Main = (props) => {
-    return (
-        <div>
-            <Navigation/>
-            <div>
-                <div>
-                    {props.children}
-                </div>
-            </div>
-        </div>
-    );
+class Main extends React.Component {
+  render() {
+      return (
+          <div>
+              <div>
+                  <Navigation/>
+                  <div>
+                      {this.props.children}
+                  </div>
+              </div>
+          </div>
+      );
+  }
 }
 
-module.exports = Main;
+export default Main;

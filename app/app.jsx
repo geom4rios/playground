@@ -1,23 +1,23 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var {Route, Router, IndexRoute, hashHistory} = require('react-router');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {Router, Route, hashHistory, IndexRoute} from 'react-router';
 
 // App scss
-require('style!css!sass!applicationStyles');
+require('applicationStyles');
 
 //load bootstrap
-require('bootstrapStyle');
-require('bootstrapJs');
+//require('bootstrapStyle');
+//require('bootstrapJs');
 
-var Main = require('Main');
-var Home = require('Home');
-var About = require('About');
+import Main from 'Main';
+import Home from 'Home';
+import About from 'About';
 
 ReactDOM.render(
     <Router history={hashHistory}>
         <Route path="/" component={Main}>
-            <IndexRoute  component={Home}/>
-            <Route path="/about" component={About}/>
+            <IndexRoute component={Home}/>
+            <Route path="/about" component={About} />
         </Route>
     </Router>,
     document.getElementById('app')

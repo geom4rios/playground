@@ -1,14 +1,13 @@
-var React = require('react');
+import React from 'react';
 
-var Navigation = React.createClass({
-    render: function () {
+class Navigation extends React.Component {
+    render() {
         return (
             <div>
                 <p>Navigation</p>
             </div>
-
         )
     }
-});
+}
 
-module.exports = Navigation;
+export default Navigation;
