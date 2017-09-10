@@ -1,6 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+var {Provider} = require('react-redux');
 import {Router, Route, hashHistory, IndexRoute} from 'react-router';
+
+//get redux functinality
+import * as actions from 'actions';
+var store = require('configureStore').configure();
+
+store.getState();
+
 
 // App scss
 require('applicationStyles');
@@ -20,11 +28,13 @@ import Home from 'Home';
 import About from 'About';
 
 ReactDOM.render(
-    <Router history={hashHistory}>
-        <Route path="/" component={Main}>
-            <IndexRoute component={Home}/>
-            <Route path="/about" component={About} />
-        </Route>
-    </Router>,
+    <Provider store={store}>
+        <Router history={hashHistory}>
+            <Route path="/" component={Main}>
+                <IndexRoute component={Home}/>
+                <Route path="/about" component={About} />
+            </Route>
+        </Router>
+    </Provider>,
     document.getElementById('app')
 );

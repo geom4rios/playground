@@ -26,7 +26,10 @@ module.exports = {
     },
     resolve: {
         modules: [
-            './app/components',
+            './app/components/',
+            './app/actions/',
+            './app/reducers/',
+            '.app/store/',
             './node_modules'
         ],
         alias: {
@@ -34,7 +37,8 @@ module.exports = {
             popperJS: path.resolve(__dirname, 'node_modules/popper.js/dist/umd/popper.js'),
             applicationStyles: path.resolve(__dirname,'app/styles/app.scss'),
             bootstrapStyle: path.resolve(__dirname, 'node_modules/bootstrap/dist/css/bootstrap.css'),
-            bootstrapJs: path.resolve(__dirname, 'node_modules/bootstrap/dist/js/bootstrap.js')
+            bootstrapJs: path.resolve(__dirname, 'node_modules/bootstrap/dist/js/bootstrap.js'),
+            configureStore: path.resolve(__dirname, 'app/store/configureStore.jsx')
         },
         extensions: ['.js', '.jsx']
     },
