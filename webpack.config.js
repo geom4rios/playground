@@ -30,6 +30,7 @@ module.exports = {
             './app/actions/',
             './app/reducers/',
             '.app/store/',
+            '.app/firebase/',
             './node_modules'
         ],
         alias: {
@@ -38,7 +39,8 @@ module.exports = {
             applicationStyles: path.resolve(__dirname,'app/styles/app.scss'),
             bootstrapStyle: path.resolve(__dirname, 'node_modules/bootstrap/dist/css/bootstrap.css'),
             bootstrapJs: path.resolve(__dirname, 'node_modules/bootstrap/dist/js/bootstrap.js'),
-            configureStore: path.resolve(__dirname, 'app/store/configureStore.jsx')
+            configureStore: path.resolve(__dirname, 'app/store/configureStore.jsx'),
+            firebaseApi: path.resolve(__dirname,'app/firebase/firebase.js')
         },
         extensions: ['.js', '.jsx']
     },

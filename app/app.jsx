@@ -9,6 +9,10 @@ var store = require('configureStore').configure();
 
 store.getState();
 
+/*store.subscribe( () => {
+    console.log("changed");
+});*/
+
 
 // App scss
 require('applicationStyles');

@@ -1,11 +1,24 @@
 import * as redux from 'redux';
 import thunk from 'redux-thunk';
 
-import {counterReducer} from 'reducers';
+import {counterReducer, languageReducer, userReducer} from 'reducers';
 
-export var configure = (initialState = {counter: 0}) => {
+
+var user = {
+    signedIn: false
+}
+
+var init = {
+    counter: 0,
+    language: {marios: 'marios'},
+    user: user
+}
+
+export var configure = (initialState = {counter: 0, language: {marios: 'marios'}}) => {
     var reducer = redux.combineReducers({
         counter: counterReducer,
+        language: languageReducer,
+        user: userReducer
     });
 
     var store = redux.createStore(reducer, initialState, redux.compose(
