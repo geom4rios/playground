@@ -1,5 +1,15 @@
 var express = require('express');
 
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+
+if (process.env.NODE_ENV === 'development') {
+    require('dotenv').config();
+
+    console.log("IN DEV MODE");
+    console.log(process.env.FIREBASE_API_KEY);
+
+}
+
 // Create our app
 var app = express();
 const PORT = process.env.PORT || 3000;
