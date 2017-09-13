@@ -7,12 +7,7 @@ import {Router, Route, hashHistory, IndexRoute} from 'react-router';
 import * as actions from 'actions';
 var store = require('configureStore').configure();
 
-store.getState();
-
-/*store.subscribe( () => {
-    console.log("changed");
-});*/
-
+//store.getState();
 
 // App scss
 require('applicationStyles');

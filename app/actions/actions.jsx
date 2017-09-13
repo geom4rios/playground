@@ -19,23 +19,29 @@ export var changeLanguageGR = () => {
     }
 };
 
-export var startSignInUser = () => {
+export var startSignInUser = (loginEmail, loginPass) => {
 
     return (dispatch, getState) => {
-        var email = "geom4rios.dev@gmail.com";
-        var password = "pass1234";
+        var email = loginEmail;
+        var password = loginPass;
+        var falsePassword = false;
 
-        firebaseApi.firebaseRef.signInWithEmailAndPassword(email, password);
-        var user = firebaseApi.firebaseRef.currentUser;
-
-        if (user) {
-            // User is signed in.
-            return dispatch(signInUser());
-        } else {
-            // No user is signed in
-            console.log("NOT SIGNED IN");
-        }
-
+        firebaseApi.firebaseRef.signInWithEmailAndPassword(email, password).catch(function(error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            alert(error.message);
+            falsePassword = true;
+        }).then(
+            function() {
+                console.log("coming in then anyway");
+                if(falsePassword) {
+                    return -1;
+                } else {
+                    return dispatch(signInUser());
+                }
+            }
+        );
     }
 };
 
@@ -48,21 +54,17 @@ export var signInUser = () => {
 export var startSignOutUser = () => {
 
     return (dispatch, getState) => {
-
-
-        var user = firebaseApi.firebaseRef.signOut();
-
-console.log(user);
-        if (user) {
-            // User is signed in.
-            return dispatch(signOutUser());
-        } else {
-            // No user is signed in
-            console.log("NOT SIGNED OUT");
-        }
-
+        firebaseApi.firebaseRef.signOut().catch(function(error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+        }).then(
+            function() {
+                return dispatch(signOutUser());
+            }
+        );
     }
-}
+};
 
 export var signOutUser = () => {
     return {

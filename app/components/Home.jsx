@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import * as actions from 'actions';
 import * as firebaseApi from 'firebaseApi';
+import Login from 'Login';
 
 class Home extends React.Component {
 
@@ -13,12 +14,12 @@ class Home extends React.Component {
     };
 
     /* handleSignIn(email,password) {
-         console.log('here in handleSignIn');
-         firebaseApi.firebaseRef.signInWithEmailAndPassword(email, password).catch(function(error) {
-             // Handle Errors here.
-             var errorCode = error.code;
-             var errorMessage = error.message;
-         });
+     console.log('here in handleSignIn');
+     firebaseApi.firebaseRef.signInWithEmailAndPassword(email, password).catch(function(error) {
+     // Handle Errors here.
+     var errorCode = error.code;
+     var errorMessage = error.message;
+     });
      }*/
 
     showUser() {
@@ -43,21 +44,16 @@ class Home extends React.Component {
         } else {
             return (
                 <div>
-                    <button onClick={
-                        () => { dispatch(actions.startSignInUser()); }
-                    }>
-                        sign in
-                    </button>
-
+                    <Login />
                 </div>
             )
         }
     }
 
-    render () {
-        var {counter, language, dispatch} = this.props;
+    componentDidMoiunt
 
-        console.log(counter);
+    render () {
+        var {counter, language, user, dispatch} = this.props;
 
         return (
             <div>
