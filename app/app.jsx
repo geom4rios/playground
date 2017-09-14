@@ -5,7 +5,7 @@ import {Router, Route, hashHistory, IndexRoute} from 'react-router';
 
 //get redux functinality
 import * as actions from 'actions';
-var store = require('configureStore').configure();
+import {store} from 'configureStore';
 
 //store.getState();
 

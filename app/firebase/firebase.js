@@ -1,14 +1,6 @@
 var firebase = require('firebase');
-
-/* Initialize Firebase
-var config = {
-    apiKey: process.env.FIREBASE_API_KEY,
-    authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-    databaseURL: process.env.FIREBASE_DATABASE_URL,
-    projectId: process.env.FIREBASE_PROJECT_ID,
-    storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
-    messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID
-};*/
+import {store} from 'configureStore';
+import * as actions from 'actions';
 
 // Initialize Firebase
 var config = {
@@ -21,11 +13,10 @@ var config = {
 };
 
 firebase.initializeApp(config);
-
 export var firebaseRef = firebase.auth();
+export var firebaseAuth = firebase.auth;
 
-
-/*firebaseApi.firebaseRef.onAuthStateChanged(function(user) {
+firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
         // User is signed in.
         var displayName = user.displayName;
@@ -35,14 +26,11 @@ export var firebaseRef = firebase.auth();
         var isAnonymous = user.isAnonymous;
         var uid = user.uid;
         var providerData = user.providerData;
-        console.log(email + " just signed in");
-        console.log("going to call dispatch");
-        store.dispatch(actions.signInUser);
+        console.log("User just signed in");
+        console.log(store.getState());
+        store.dispatch(actions.signInUser());
     } else {
-        // User is signed out
-        console.log("user just signed out");
+        console.log("User just signed out");
     }
-});*/
-
-
+});
 

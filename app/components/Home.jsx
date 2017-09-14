@@ -2,25 +2,16 @@ import React from 'react';
 import {connect} from 'react-redux';
 import * as actions from 'actions';
 import * as firebaseApi from 'firebaseApi';
-import Login from 'Login';
+import Login from 'partials/Login';
+import Register from 'partials/Register';
+import DeleteUser from 'partials/DeleteUser';
 
 class Home extends React.Component {
 
     constructor(props) {
         super(props);
-
         this.showUser = this.showUser.bind(this);
-        //this.handleSignIn = this.handleSignIn.bind(this);
     };
-
-    /* handleSignIn(email,password) {
-     console.log('here in handleSignIn');
-     firebaseApi.firebaseRef.signInWithEmailAndPassword(email, password).catch(function(error) {
-     // Handle Errors here.
-     var errorCode = error.code;
-     var errorMessage = error.message;
-     });
-     }*/
 
     showUser() {
 
@@ -80,7 +71,22 @@ class Home extends React.Component {
 
                 <hr />
 
+                <h3> Login Form </h3>
                 {this.showUser()}
+
+                <hr />
+
+                <h3> Register Form </h3>
+
+                <Register />
+
+                <hr />
+
+                <DeleteUser />
+
+                <hr />
+
+
 
             </div>
         );
