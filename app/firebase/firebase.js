@@ -34,3 +34,17 @@ firebase.auth().onAuthStateChanged(function(user) {
     }
 });
 
+
+/* Create a root reference
+var storageRef = firebase.storage().ref();
+
+ Create a reference to 'mountains.jpg'
+var mountainsRef = storageRef.child('images/myfile.txt');
+
+var file = new File(["foo"], "app/uploads/node_mailer_bak.txt", {
+    type: "text/plain",
+});
+mountainsRef.put(file).then(function(snapshot) {
+    console.log('Uploaded a blob or file!');
+});*/
+

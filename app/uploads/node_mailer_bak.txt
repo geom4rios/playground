@@ -1,0 +1,35 @@
+var email = req.body.email;
+    var name = req.body.name;
+    var comments = req.body.comments;
+
+    var htmlcomments = "<b>" + comments + "</b>";
+
+
+    let transporter = nodemailer.createTransport({
+        host: 'localhost',
+        service: 'Gmail',
+        auth: {
+            user: 'geom4rios.dev@gmail.com',
+            pass: 'Mortgal1!'
+        }
+    });
+
+    // setup email data with unicode symbols
+    let mailOptions = {
+        from: 'geom4rios@hotmail.com', // list of receivers
+        to: 'geom4rios@hotmail.com',
+        subject: 'Happy Life CY Mail from ' + name + ' ' + email, // Subject line
+        text: comments,
+        html: comments
+    };
+
+    // send mail with defined transport object
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            return console.log(error);
+        }
+        transporter.close();
+    });
+
+    //res.send('The Contact page');
+    res.sendFile(path.resolve(__dirname, 'public/', 'index.html'));

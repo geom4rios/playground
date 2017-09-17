@@ -18,8 +18,6 @@ class Home extends React.Component {
         var {dispatch} = this.props;
 
         var user = firebaseApi.firebaseRef.currentUser;
-        //var email = "geom4rios.dev@gmail.com";
-        //var password="pass1234";
 
         if(user) {
             return (
@@ -83,6 +81,13 @@ class Home extends React.Component {
                 <hr />
 
                 <DeleteUser />
+
+                <hr />
+
+                <form method="post" encType="multipart/form-data" action="/upload">
+                    <input type="file" name="profile" />
+                    <input type="submit" value="Submit with multer" />
+                </form>
 
                 <hr />
 
