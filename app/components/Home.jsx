@@ -10,8 +10,56 @@ class Home extends React.Component {
 
     constructor(props) {
         super(props);
+
+        this.state = {
+            imagesArray: []
+        };
+
         this.showUser = this.showUser.bind(this);
+        this.handleFiles = this.handleFiles.bind(this);
+        this.handleFileSumit = this.handleFileSumit.bind(this);
     };
+
+    handleFileSumit(e) {
+        e.preventDefault();
+
+        var {dispatch} = this.props;
+
+        var max_num_files_allowed = 3;
+
+        var ValidImageTypes = ["image/gif", "image/jpeg", "image/png"];
+
+        if (this.state.imagesArray.length > 0) {
+            Array.from(this.state.imagesArray).forEach(file => {
+                var fileType = file["type"];
+
+                if (ValidImageTypes.includes(fileType)) {
+                    console.log("Will start uploading " + file.filename);
+                    dispatch(actions.startFileUpload(file));
+                } else {
+                    alert("Sorry " + fileType + " is not allowed");
+                }
+            });
+        }
+    }
+
+    handleFiles(e) {
+        var {dispatch} = this.props;
+
+        var upFiles = e.target.files;
+
+        Array.from(upFiles).forEach(file => {
+            var tempFiles = this.state.imagesArray;
+
+            tempFiles.push(file);
+            this.setState({
+                imagesArray: tempFiles
+            });
+        });
+
+        console.log(this.state.imagesArray);
+
+    }
 
     showUser() {
 
@@ -38,8 +86,6 @@ class Home extends React.Component {
             )
         }
     }
-
-    componentDidMoiunt
 
     render () {
         var {counter, language, user, dispatch} = this.props;
@@ -87,6 +133,13 @@ class Home extends React.Component {
                 <form method="post" encType="multipart/form-data" action="/upload">
                     <input type="file" name="profile" />
                     <input type="submit" value="Submit with multer" />
+                </form>
+
+                <hr />
+
+                <form onSubmit={this.handleFileSumit}>
+                    <input type="file" id="input" multiple onChange={this.handleFiles} />
+                    <input type="submit" value="Upload files to firebase" />
                 </form>
 
                 <hr />
