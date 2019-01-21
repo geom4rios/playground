@@ -4,12 +4,12 @@ import * as actions from 'actions';
 
 // Initialize Firebase
 var config = {
-    apiKey: "AIzaSyDcSoxWZAfq5zgelkdFsCRiMdjn1m_ZSPU",
-    authDomain: "playground-b2740.firebaseapp.com",
-    databaseURL: "https://playground-b2740.firebaseio.com",
-    projectId: "playground-b2740",
-    storageBucket: "playground-b2740.appspot.com",
-    messagingSenderId: "143853100214"
+    apiKey: "",
+    authDomain: "",
+    databaseURL: "",
+    projectId: "",
+    storageBucket: "",
+    messagingSenderId: ""
 };
 
 firebase.initializeApp(config);
